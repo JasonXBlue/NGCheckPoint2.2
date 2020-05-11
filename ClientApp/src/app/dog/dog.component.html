@@ -1,0 +1,31 @@
+<h1 id="tableLabel">Dogs</h1>
+
+<p *ngIf="!dogs"><em>Loading...</em></p>
+
+<table class="table table-striped" aria-labelledby="tableLabel" *ngIf="dogs">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Breed</th>
+      <th>Age</th>
+      <th>Kid Friendly</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of dogs">
+      <td>{{ s.name }}</td>
+      <td>{{ s.breed }}</td>
+      <td>{{ s.age }}</td>
+      <td>{{ s.kidFriendly }}</td>
+    </tr>
+  </tbody>
+</table>
+Name
+<input [(ngModel)]="dog.name" type="text" name="name" />
+Breed
+<input [(ngModel)]="dog.breed" type="text" name="breed" />
+Age
+<input [(ngModel)]="dog.age" type="number" name="age" />
+Kid Friendly
+<input [(ngModel)]="dog.kidFriendly" type="checkbox" name="kidFriendly" />
+<button (click)="save()">Save</button>
