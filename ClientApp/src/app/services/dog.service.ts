@@ -12,14 +12,10 @@ export class DogService {
   ) {}
 
   async getDogs() {
-    // return this.httpClient.get<IDog[]>("${this.baseUrl}doglist").toPromise();
     return this.httpClient.get<IDog[]>(this.baseUrl + "doglist").toPromise();
   }
 
   async addDog(dog: IDog) {
-    // return await this.httpClient
-    //   .post<IDog>("${this.baseUrl}doglist", dog)
-    //   .toPromise();
     return await this.httpClient
       .post<IDog>(this.baseUrl + "doglist", dog)
       .toPromise();

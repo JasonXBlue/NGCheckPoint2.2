@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace capstone.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class DogListController : ControllerBase
@@ -33,13 +33,6 @@ namespace capstone.Controllers
 
             return dogs;
 
-            // Dog[] dogs = null;
-            // using (var context = new ApplicationDbContext())
-            // {
-            //     dogs = context.Dogs.ToArray();
-            // }
-            // return dogs;
-
         }
         [HttpPost]
         public Dog Post([FromBody] Dog dog)
@@ -48,13 +41,6 @@ namespace capstone.Controllers
             _context.Dogs.Add(dog);
             _context.SaveChanges();
             return dog;
-
-            // using (var context = new ApplicationDbContext())
-            // {
-            //     context.Dogs.Add(dog);
-            //     context.SaveChanges();
-            // }
-            // return dog;
         }
     }
 }

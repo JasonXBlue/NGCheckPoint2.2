@@ -16,7 +16,6 @@ export class DogComponent implements OnInit {
   };
 
   dogs: IDog[] = [];
-  //newDog: IDog = { name: "", breed: "", age: 1, kidFriendly: true };
 
   constructor(private service: DogService) {}
 
