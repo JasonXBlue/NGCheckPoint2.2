@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { IDog } from "../interfaces/idog";
+import { DogService } from "../services/dog.service";
 
 @Component({
   selector: "app-dog",
@@ -15,8 +16,18 @@ export class DogComponent implements OnInit {
   };
 
   dogs: IDog[] = [];
+  //newDog: IDog = { name: "", breed: "", age: 1, kidFriendly: true };
 
-  constructor() {}
+  constructor(private service: DogService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.dogs = await this.service.getDogs();
+    console.log(this.dogs);
+  }
+
+  async save() {
+    const newDog = await this.service.addDog(this.dog);
+    this.dogs.push(newDog);
+    console.log(newDog);
+  }
 }

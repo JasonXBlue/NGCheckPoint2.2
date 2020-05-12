@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace capstone.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class DogListController : ControllerBase
@@ -29,7 +29,7 @@ namespace capstone.Controllers
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             Dog[] dogs = null;
-            _context.Dogs.Where(d => d.User.Id == userId).ToArray();
+            dogs = _context.Dogs.Where(d => d.UserId == userId).ToArray();
 
             return dogs;
 
@@ -44,6 +44,7 @@ namespace capstone.Controllers
         [HttpPost]
         public Dog Post([FromBody] Dog dog)
         {
+            dog.UserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             _context.Dogs.Add(dog);
             _context.SaveChanges();
             return dog;

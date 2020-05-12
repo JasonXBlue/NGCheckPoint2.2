@@ -50,7 +50,11 @@ import { DogComponent } from "./dog/dog.component";
         component: TeacherComponent,
         canActivate: [AuthorizeGuard],
       },
-      { path: "dogs", component: DogComponent },
+      {
+        path: "dogs",
+        component: DogComponent,
+        canActivate: [AuthorizeGuard],
+      },
     ]),
   ],
   providers: [
